@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Build a tailored Employee Self-Service rollout and adoption playbook for your organization.">
+  <meta property="og:title" content="ESS Rollout & Adoption Interactive Playbook">
+  <meta property="og:description" content="Plan your Employee Self-Service rollout, adoption, and value realization approach.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://microsoft.github.io/ESS-Rollout-Playbook/">
+  <title>ESS Rollout & Adoption Interactive Playbook</title>
+  <link rel="icon" href="data:,">
+  <script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+    const theme =
+      param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+  </script>
+  <style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #0078d4;
+  --cp-accent-hover: #106ebe;
+  --cp-accent-soft: rgba(0, 120, 212, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+  --cp-overlay: rgba(255, 255, 255, 0.8);
+  --cp-panel: rgba(255, 255, 255, 0.86);
+  --cp-panel-strong: rgba(255, 255, 255, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.55);
+  --cp-highlight: rgba(0, 120, 212, 0.12);
+  --cp-ms-red: #f25022;
+  --cp-ms-green: #7fba00;
+  --cp-ms-blue: #00a4ef;
+  --cp-ms-yellow: #ffb900;
+  --cp-brand-purple: #8661c5;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #60cdff;
+  --cp-accent-hover: #8ddcff;
+  --cp-accent-soft: rgba(96, 205, 255, 0.14);
+  --cp-accent-fg: #0b1a20;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  --cp-overlay: rgba(41, 41, 41, 0.88);
+  --cp-panel: rgba(41, 41, 41, 0.72);
+  --cp-panel-strong: rgba(41, 41, 41, 0.96);
+  --cp-sheen: rgba(255, 255, 255, 0.04);
+  --cp-highlight: rgba(96, 205, 255, 0.12);
+  --cp-ms-red: #f25022;
+  --cp-ms-green: #7fba00;
+  --cp-ms-blue: #00a4ef;
+  --cp-ms-yellow: #ffb900;
+  --cp-brand-purple: #b4a0ff;
+}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.45;
+    }
+    a { color: var(--cp-link); }
+    h1, h2, h3, h4 { margin: 0; line-height: 1.12; }
+    h1 { font-size: clamp(40px, 6vw, 76px); letter-spacing: -0.05em; }
+    h2 { font-size: clamp(26px, 4vw, 48px); letter-spacing: -0.04em; }
+    h3 { font-size: 22px; letter-spacing: -0.02em; }
+    h4 { font-size: 16px; }
+    p { margin: 0; color: var(--cp-text-muted); }
+    ul, ol { margin: 0; padding-left: 22px; color: var(--cp-text-muted); }
+    li { margin: 8px 0; }
+    button, input, select, textarea { font: inherit; }
+    .wrap { width: min(1240px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      background:
+        radial-gradient(circle at top right, var(--cp-highlight), transparent 34%),
+        radial-gradient(circle at top left, var(--cp-accent-soft), transparent 28%),
+        linear-gradient(135deg, var(--cp-bg-elevated), var(--cp-surface));
+      border-bottom: 1px solid var(--cp-border);
+      padding: 28px 0 34px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+    .ms-mark {
+      display: inline-grid;
+      grid-template-columns: repeat(2, 12px);
+      gap: 3px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    .ms-mark span {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+    }
+    .ms-mark span:nth-child(1) { background: var(--cp-ms-red); }
+    .ms-mark span:nth-child(2) { background: var(--cp-ms-green); }
+    .ms-mark span:nth-child(3) { background: var(--cp-ms-blue); }
+    .ms-mark span:nth-child(4) { background: var(--cp-ms-yellow); }
+    .brand-name { font-size: 28px; font-weight: 700; color: var(--cp-text); }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .gradient-text {
+      color: var(--cp-accent);
+      background: linear-gradient(100deg, var(--cp-accent), var(--cp-brand-purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-copy { display: grid; gap: 18px; align-content: start; }
+    .hero-copy p { max-width: 760px; font-size: 19px; }
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      background: var(--cp-bg-elevated);
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .site-nav .wrap {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      align-items: center;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .site-page:not(.active-page) { display: none !important; }
+    .site-page.active-page { display: block !important; }
+    .site-main {
+      padding: 28px 0 56px;
+      display: grid;
+      gap: 24px;
+    }
+    .section-shell {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 22px;
+      padding: 26px 0 56px;
+      align-items: start;
+    }
+    .panel {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.14);
+    }
+    .intake {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+    .field { display: grid; gap: 8px; }
+    label, legend { font-weight: 700; color: var(--cp-text); }
+    .hint { color: var(--cp-text-soft); font-size: 13px; font-weight: 400; }
+    input[type="text"], select, textarea {
+      width: 100%;
+      background: var(--cp-bg-elevated);
+      color: var(--cp-text);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      padding: 10px 12px;
+    }
+    textarea { min-height: 86px; resize: vertical; }
+    fieldset {
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      margin: 0;
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+    }
+    .check {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px;
+      background: var(--cp-bg-elevated);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      color: var(--cp-text-muted);
+    }
+    .check input { margin-top: 4px; accent-color: var(--cp-accent); }
+    .other-field {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid var(--cp-border);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    button {
+      border: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      border-radius: 0.625rem;
+      padding: 10px 13px;
+      cursor: pointer;
+    }
+    button.primary {
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      border-color: var(--cp-accent);
+      font-weight: 700;
+    }
+    button:hover { border-color: var(--cp-border-strong); }
+    .tabs {
+      display: grid;
+      gap: 18px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    .tab-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background: var(--cp-bg);
+      padding: 8px 0;
+    }
+    .tab {
+      text-align: left;
+      min-height: 72px;
+      background: var(--cp-surface);
+    }
+    .tab[aria-selected="true"] {
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      border-color: var(--cp-accent);
+    }
+    .tab small { display: block; opacity: .85; font-weight: 400; margin-top: 4px; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; gap: 18px; }
+    .playbook-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .badge {
+      border: 1px solid var(--cp-border);
+      background: var(--cp-accent-soft);
+      color: var(--cp-text);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .grid { display: grid; gap: 14px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      border: 1px solid var(--cp-border);
+      background: var(--cp-surface-soft);
+      border-radius: 16px;
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+    .card strong { color: var(--cp-text); }
+    .callout {
+      border-left: 5px solid var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border-radius: 0.625rem;
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+    }
+    .learn-links, .source-note {
+      border: 1px solid var(--cp-border);
+      background: var(--cp-bg-elevated);
+      border-radius: 16px;
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+    .learn-links div {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .learn-links a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      margin: 0;
+      padding: 10px 12px;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-link);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .learn-links a:hover {
+      border-color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+    }
+    .source-note {
+      margin: 0 auto 18px;
+      color: var(--cp-text-muted);
+      font-size: 13px;
+    }
+    .customization-note {
+      margin-top: 10px;
+      border: 1px solid var(--cp-border);
+      background: var(--cp-accent-soft);
+      border-radius: 16px;
+      padding: 14px;
+      color: var(--cp-text-muted);
+      display: grid;
+      gap: 6px;
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .step {
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-top: 5px solid var(--cp-accent);
+      border-radius: 16px;
+      padding: 15px;
+      display: grid;
+      gap: 8px;
+    }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 16px; }
+    th, td { border: 1px solid var(--cp-border); padding: 12px; text-align: left; vertical-align: top; }
+    th { background: var(--cp-accent); color: var(--cp-accent-fg); }
+    td { background: var(--cp-surface-soft); color: var(--cp-text-muted); }
+    .confidential-footer {
+      width: min(1240px, calc(100% - 40px));
+      margin: 0 auto 18px;
+      padding: 12px 0 0;
+      border-top: 1px solid var(--cp-border);
+      color: var(--cp-text-soft);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .print-only { display: none; }
+    @media (max-width: 980px) {
+      .hero-grid, .section-shell, .two, .three, .timeline { grid-template-columns: 1fr; }
+      .intake, .tab-list { position: static; }
+      .tab-list { grid-template-columns: 1fr; }
+      .playbook-header { grid-template-columns: 1fr; }
+      .playbook-header .actions { justify-content: flex-start; }
+    }
+    @media print {
+      @page { margin: 12mm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        background: var(--cp-surface);
+        font-size: 11pt;
+        line-height: 1.35;
+      }
+      .hero, .site-nav, .intake, .tab-list, .screen-only { display: none !important; }
+      .wrap { width: auto; margin: 0; }
+      .site-page { display: block !important; }
+      .section-shell { display: block; padding: 0; }
+      .panel { box-shadow: none; border: 0; padding: 0; }
+      .card, .callout, .learn-links, .source-note, .customization-note, .step, table {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .print-only { display: none !important; }
+      .playbook-header {
+        display: block;
+        text-align: center;
+        margin: 0 0 18px;
+      }
+      #playbookTitle {
+        font-size: 24pt;
+        letter-spacing: -0.02em;
+      }
+      #playbookTitle .gradient-text {
+        color: var(--cp-text);
+        background: none;
+        -webkit-text-fill-color: currentColor;
+      }
+      .tab-panel { display: grid !important; page-break-after: always; }
+      .tab-panel:last-child { page-break-after: auto; }
+      .two, .three, .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .learn-links a {
+        min-height: auto;
+        padding: 6px 8px;
+      }
+      th, td { padding: 8px; }
+      button { display: none; }
+      .confidential-footer { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="brand-row">
+          <div class="brand-name"><span class="ms-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Microsoft</div>
+        </div>
+        <div>
+          <h1><span class="gradient-text">Employee Self-Service Agent</span><br>Rollout & Adoption Playbook</h1>
+        </div>
+        <p>Use the questionnaire to tailor a customer-ready playbook across Foundation, Rollout Strategy, Rollout Execution & Adoption, and Realizing Value.</p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="site-nav screen-only">
+    <div class="wrap">
+      <div class="nav-actions">
+        <button type="button" data-page="homePage">Overview</button>
+        <button type="button" data-page="questionnairePage">Questionnaire</button>
+        <button type="button" data-page="playbookPage">Custom Playbook</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap site-main">
+    <section class="panel site-page active-page screen-only" id="homePage">
+      <div class="grid two">
+        <div class="card">
+          <h2>Build a tailored ESS rollout plan</h2>
+          <p>Start with a focused questionnaire, then review each playbook section as its own guided experience rather than a single dense page.</p>
+        </div>
+        <div class="card">
+          <h3>How to get your ESS custom rollout & adoption playbook</h3>
+          <ol>
+            <li>Complete the questionnaire.</li>
+            <li>Generate the custom playbook.</li>
+            <li>Move through Foundation, Rollout Strategy, Rollout Execution & Adoption, and Realizing Value as separate sections.</li>
+            <li>Download the custom version as a PDF when ready.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="primary" type="button" data-page="questionnairePage">Start questionnaire</button>
+        <button type="button" data-page="playbookPage">View playbook</button>
+      </div>
+    </section>
+
+    <form class="panel intake site-page screen-only" id="questionnairePage">
+      <div>
+        <h2>Questionnaire</h2>
+        <p>Answer what you know, then generate a custom playbook. The PDF download is available on the Custom Playbook page.</p>
+      </div>
+      <div class="field">
+        <label for="orgName">Customer / organization</label>
+        <input id="orgName" type="text" value="Customer organization">
+      </div>
+      <div class="field">
+        <label for="phase">Current phase</label>
+        <select id="phase">
+          <option>MVP planning</option>
+          <option selected>MVP / pilot active</option>
+          <option>Broader rollout</option>
+          <option>Future expansion</option>
+        </select>
+      </div>
+      <fieldset>
+        <legend>Verticals under consideration</legend>
+        <label class="check"><input type="checkbox" name="verticals" value="HR" checked> HR</label>
+        <label class="check"><input type="checkbox" name="verticals" value="IT" checked> IT</label>
+        <label class="check"><input type="checkbox" name="verticals" value="Facilities"> Facilities</label>
+        <div class="field other-field">
+          <label for="otherVerticals">Other verticals or customer vision <span class="hint">Optional</span></label>
+          <input id="otherVerticals" type="text" placeholder="Describe another vertical or the customer's broader vision">
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="audience">Initial rollout audience</label>
+        <select id="audience">
+          <option>Single vertical or representative pilot group</option>
+          <option selected>HR / IT employee self-service users</option>
+          <option>Region or business-unit wave</option>
+          <option>Enterprise-wide rollout</option>
+        </select>
+      </div>
+
+      <fieldset>
+        <legend>Current systems and channels</legend>
+        <label class="check"><input type="checkbox" name="systems" value="Workday" checked> Workday</label>
+        <label class="check"><input type="checkbox" name="systems" value="ServiceNow" checked> ServiceNow</label>
+        <label class="check"><input type="checkbox" name="systems" value="SharePoint" checked> SharePoint</label>
+        <label class="check"><input type="checkbox" name="systems" value="Teams" checked> Teams</label>
+        <label class="check"><input type="checkbox" name="systems" value="web portals and mobile"> Web portals and mobile</label>
+        <div class="field other-field">
+          <label for="otherSystems">Other systems or channels <span class="hint">Optional</span></label>
+          <input id="otherSystems" type="text" placeholder="Add another system or channel">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Challenges to address</legend>
+        <label class="check"><input type="checkbox" name="challenges" value="low employee satisfaction with fragmented self-service tools" checked> Low self-service satisfaction</label>
+        <label class="check"><input type="checkbox" name="challenges" value="high routine HR and IT ticket volume overwhelming support teams" checked> High HR / IT ticket volume</label>
+        <label class="check"><input type="checkbox" name="challenges" value="difficulty finding accurate, up-to-date policy, benefits, and procedure information" checked> Hard-to-find policy information</label>
+        <label class="check"><input type="checkbox" name="challenges" value="inefficient leave, payroll, and HR / IT processes"> Inefficient HR / IT processes</label>
+        <label class="check"><input type="checkbox" name="challenges" value="limited standardization and automation across locations and departments"> Standardization and automation gaps</label>
+        <div class="field other-field">
+          <label for="otherChallenges">Other challenge <span class="hint">Optional</span></label>
+          <input id="otherChallenges" type="text" placeholder="Add another challenge">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Target outcomes</legend>
+        <label class="check"><input type="checkbox" name="outcomes" value="greater employee satisfaction and engagement through a unified self-service experience" checked> Higher employee satisfaction</label>
+        <label class="check"><input type="checkbox" name="outcomes" value="reduced time and effort to complete self-service tasks" checked> Less self-service effort</label>
+        <label class="check"><input type="checkbox" name="outcomes" value="increased ticket deflection and automation of routine queries" checked> More ticket deflection</label>
+        <label class="check"><input type="checkbox" name="outcomes" value="improved onboarding and employee lifecycle processes"> Better lifecycle processes</label>
+        <label class="check"><input type="checkbox" name="outcomes" value="clear baselines and KPIs to measure ROI and business alignment"> Clear ROI baselines and KPIs</label>
+        <div class="field other-field">
+          <label for="otherOutcomes">Other target outcome <span class="hint">Optional</span></label>
+          <input id="otherOutcomes" type="text" placeholder="Add another target outcome">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Use cases in scope</legend>
+        <label class="check"><input type="checkbox" name="usecases" value="Knowledge Retrieval"> Knowledge retrieval</label>
+        <label class="check"><input type="checkbox" name="usecases" value="Action Taking"> Action taking</label>
+        <label class="check"><input type="checkbox" name="usecases" value="Knowledge Retrieval and Action Taking" checked> Both knowledge retrieval and action taking</label>
+        <label class="check"><input type="checkbox" name="usecases" value="A2A Handoff"> A2A handoff</label>
+        <div class="field other-field">
+          <label for="otherUseCases">Other use case <span class="hint">Optional</span></label>
+          <input id="otherUseCases" type="text" placeholder="Add another use case">
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button class="primary" type="button" id="generate">Generate playbook</button>
+        <button type="button" id="copy">Copy summary</button>
+      </div>
+    </form>
+
+    <section class="panel tabs site-page" id="playbookPage">
+      <div class="print-only">
+        <h1>ESS Rollout & Adoption Playbook</h1>
+      </div>
+      <div class="playbook-header">
+        <div>
+          <h2 id="playbookTitle"><span class="gradient-text">Customer organization</span> ESS Playbook</h2>
+        </div>
+        <div class="actions screen-only">
+          <button class="primary" type="button" id="pdf">Download custom playbook as PDF</button>
+          <button type="button" id="reset">Reset sample</button>
+        </div>
+      </div>
+
+      <nav class="tab-list screen-only" aria-label="Playbook sections">
+        <button class="tab" type="button" aria-selected="true" data-tab="foundation">Foundation<small>Landscape, vision, governance</small></button>
+        <button class="tab" type="button" aria-selected="false" data-tab="strategy">Rollout Strategy<small>Phases, use cases, integration</small></button>
+        <button class="tab" type="button" aria-selected="false" data-tab="execution">Rollout Execution & Adoption<small>Launch, channels, hypercare</small></button>
+        <button class="tab" type="button" aria-selected="false" data-tab="value">Realizing Value<small>KPIs, baselines, ROI</small></button>
+      </nav>
+
+      <article class="tab-panel active" id="foundation"></article>
+      <article class="tab-panel" id="strategy"></article>
+      <article class="tab-panel" id="execution"></article>
+      <article class="tab-panel" id="value"></article>
+      <div class="customization-note" id="customizationNote"></div>
+    </section>
+  </main>
+  <footer class="confidential-footer" id="footerNote">This sample playbook is illustrative and will be updated based on questionnaire inputs. Recommendations are supported by Microsoft Learn documentation.</footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const selected = (name) => [...document.querySelectorAll(`input[name="${name}"]:checked`)].map((input) => input.value);
+    const sentenceList = (items, fallback) => items.length ? items.join(", ") : fallback;
+    const escapeHtml = (value) => String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+    const acronymMap = {
+      ai: "AI",
+      alm: "ALM",
+      ess: "ESS",
+      hr: "HR",
+      hris: "HRIS",
+      it: "IT",
+      itsm: "ITSM",
+      m365: "M365",
+      sap: "SAP"
+    };
+    function normalizeWords(value) {
+      return value
+        .trim()
+        .replace(/\s+/g, " ")
+        .toLowerCase()
+        .replace(/\b[a-z0-9]+\b/g, (word) => acronymMap[word] || word.charAt(0).toUpperCase() + word.slice(1));
+    }
+    function normalizeSentence(value) {
+      const normalized = value.trim().replace(/\s+/g, " ").toLowerCase();
+      return normalized.replace(/^./, (char) => char.toUpperCase()).replace(/\b(ai|alm|ess|hr|hris|it|itsm|m365|sap)\b/g, (word) => acronymMap[word] || word);
+    }
+    function normalizeOrg(value) {
+      return normalizeWords(value);
+    }
+    function withOther(name, otherId, format = "title") {
+      const raw = $(otherId).value.trim();
+      if (!raw) return selected(name);
+      const formatted = format === "sentence" ? normalizeSentence(raw) : normalizeWords(raw);
+      return [...selected(name), escapeHtml(formatted)];
+    };
+
+    const useCaseDetails = {
+      "Knowledge Retrieval": ["Retrieve trusted answers from approved knowledge sources.", "Knowledge retrieval", "Approved knowledge repositories and connectors", "MVP"],
+      "Action Taking": ["Complete or initiate employee self-service transactions.", "Action taking", "Connected systems with workflow controls", "Production"],
+      "Knowledge Retrieval and Action Taking": ["Combine answer retrieval with guided or transactional task completion.", "Knowledge retrieval / action", "Approved knowledge sources plus connected workflow systems", "Production"],
+      "A2A Handoff": ["Route from ESS to another agent or specialist workflow when a scenario crosses domain boundaries.", "Agent-to-agent handoff", "Connected agents with ownership and escalation rules", "Future"]
+    };
+
+    function scenarioProfile(name) {
+      const value = name.toLowerCase();
+      const profiles = [
+        {
+          match: ["benefit", "payroll", "compensation", "onboard", "employee", "hr", "policy", "absence"],
+          label: "HR journey opportunity",
+          pattern: "Start with trusted answers and add workflow actions once ownership and controls are clear.",
+          evidence: "HR source of truth, policy owner, escalation path, employee-data sensitivity, and measurable baseline.",
+          treatment: "Sequence with HR, Privacy, Legal, and system owners so the experience is useful, compliant, and measurable."
+        },
+        {
+          match: ["ticket", "device", "password", "access", "software", "hardware", "support", "it"],
+          label: "IT support opportunity",
+          pattern: "Start with answers or guided troubleshooting, then add ticket creation or status actions where ready.",
+          evidence: "ITSM source, support owner, ticket categories, handoff path, and telemetry for deflection or resolution.",
+          treatment: "Sequence with IT support and system owners so handoffs, telemetry, and support paths are clear."
+        },
+        {
+          match: ["facility", "desk", "room", "space", "badge", "building", "parking"],
+          label: "Facilities service opportunity",
+          pattern: "Clarify whether the experience should answer questions, guide requests, or complete actions.",
+          evidence: "Facilities system owner, request workflow, location-specific rules, handoff path, and usage baseline.",
+          treatment: "Sequence by site readiness, regional operating model, and integration maturity."
+        },
+        {
+          match: ["finance", "expense", "invoice", "procurement", "purchase", "vendor"],
+          label: "Finance service opportunity",
+          pattern: "Start with policy or status guidance, then add transactional actions after controls are confirmed.",
+          evidence: "Finance source system, process owner, approval controls, audit requirements, and support handoff.",
+          treatment: "Sequence with process owners so approvals, audit needs, and support paths are built into the rollout."
+        }
+      ];
+      return profiles.find((profile) => profile.match.some((term) => value.includes(term))) || {
+        label: "Customer-defined service opportunity",
+        pattern: "Shape the experience as knowledge retrieval, guided support, action taking, A2A handoff, or a phased blend.",
+        evidence: "Business owner, source system, knowledge owner, support path, risk level, and measurable baseline.",
+        treatment: "Use a short design review to confirm ownership, source readiness, success measures, and launch sequence."
+      };
+    }
+
+    function useCaseRow(name) {
+      if (useCaseDetails[name]) {
+        const detail = useCaseDetails[name];
+        return `<tr><td>${name}<br><span class="hint">Selected scope pattern</span></td><td>${detail[0]}</td><td>${detail[1]}</td><td>Readiness to confirm: ${detail[2]}</td><td>Suggested phase: ${detail[3]}</td></tr>`;
+      }
+      const profile = scenarioProfile(name);
+      return `<tr><td>${name}<br><span class="hint">Customer-defined priority</span></td><td>${profile.label}</td><td>${profile.pattern}</td><td>${profile.evidence}</td><td>${profile.treatment}</td></tr>`;
+    }
+
+    function context() {
+      return {
+        org: escapeHtml($("orgName").value.trim() ? normalizeOrg($("orgName").value) : "Customer organization"),
+        phase: $("phase").value,
+        verticals: withOther("verticals", "otherVerticals"),
+        audience: $("audience").value,
+        systems: withOther("systems", "otherSystems"),
+        challenges: withOther("challenges", "otherChallenges", "sentence"),
+        outcomes: withOther("outcomes", "otherOutcomes", "sentence"),
+        usecases: withOther("usecases", "otherUseCases")
+      };
+    }
+
+    function cards(items) {
+      return items.map((item) => {
+        const link = item[2] ? `<a href="${item[2][1]}" target="_blank" rel="noopener noreferrer">${item[2][0]}</a>` : "";
+        return `<div class="card"><strong>${item[0]}</strong><p>${item[1]}</p>${link}</div>`;
+      }).join("");
+    }
+
+    function list(items) {
+      return `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+    }
+
+    function scopeNarrative(usecases) {
+      const selectedUsecases = usecases.length ? usecases : ["Knowledge Retrieval and Action Taking"];
+      const hasKnowledge = selectedUsecases.includes("Knowledge Retrieval") || selectedUsecases.includes("Knowledge Retrieval and Action Taking");
+      const hasAction = selectedUsecases.includes("Action Taking") || selectedUsecases.includes("Knowledge Retrieval and Action Taking");
+      const hasHandoff = selectedUsecases.includes("A2A Handoff");
+      const hasCustom = selectedUsecases.some((name) => !useCaseDetails[name]);
+      const motions = [];
+
+      if (hasKnowledge) motions.push("trusted answer retrieval from approved sources");
+      if (hasAction) motions.push("guided or transactional self-service actions");
+      if (hasHandoff) motions.push("agent-to-agent handoff for cross-domain requests");
+      if (hasCustom) motions.push("customer-defined service moments shaped through design review");
+
+      return motions.length
+        ? motions.join(", ")
+        : "a phased self-service motion that starts with trusted answers and expands as source readiness, controls, and ownership mature";
+    }
+
+    const learn = {
+      essOverview: ["Employee Self-Service agent overview", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/overview"],
+      essCustomize: ["Customize Employee Self-Service agent", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/customize"],
+      essInstallEnvironment: ["ESS ALM", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/install#select-the-right-environment"],
+      essUsageAnalytics: ["Employee Self-Service usage analytics", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/usage-analytics"],
+      essFeedback: ["Review user feedback", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/feedback"],
+      essAuditing: ["Auditing and logging", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/auditing-logging"],
+      essCommands: ["Employee Self-Service command reference", "https://learn.microsoft.com/en-us/microsoft-365/copilot/employee-self-service/commands-reference"],
+      flightCheck: ["FlightCheck-only mode", "https://github.com/microsoft/Employee-Self-Service-Agent-Developer-Kit/blob/main/setup/README.md#flightcheck-only-mode"],
+      essEvals: ["ESS Evals Starter Test Set", "https://github.com/microsoft/CopilotStudioSamples/tree/main/EmployeeSelfServiceAgent/ESSEvaluationSamples/StarterTestSets"]
+    };
+
+    function learnLinks(items) {
+      return `<div class="learn-links"><strong>Microsoft Learn references</strong><div>${items.map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`).join("")}</div></div>`;
+    }
+
+    function sampleContext() {
+      return {
+        org: "Contoso",
+        phase: "MVP / pilot active",
+        verticals: ["HR", "IT"],
+        audience: "HR / IT employee self-service users",
+        systems: ["Workday", "ServiceNow", "SharePoint", "Teams"],
+        challenges: [
+          "low employee satisfaction with fragmented self-service tools",
+          "high routine HR and IT ticket volume overwhelming support teams",
+          "difficulty finding accurate, up-to-date policy, benefits, and procedure information"
+        ],
+        outcomes: [
+          "greater employee satisfaction and engagement through a unified self-service experience",
+          "reduced time and effort to complete self-service tasks",
+          "increased ticket deflection and automation of routine queries"
+        ],
+        usecases: ["Knowledge Retrieval and Action Taking"]
+      };
+    }
+
+    function setCustomizationNote(ctx, isTailored) {
+      $("customizationNote").innerHTML = isTailored
+        ? `<strong>Current customization</strong><p>This custom playbook has been tailored using the questionnaire selections: ${escapeHtml(ctx.phase)}, ${sentenceList(ctx.verticals, "selected verticals")}, ${escapeHtml(ctx.audience)}, and ${ctx.usecases.length || 0} selected use cases.</p>`
+        : `<strong>Current customization</strong><p>This is a sample playbook using Contoso and representative ESS rollout selections. The playbook will update when questionnaire inputs are generated.</p>`;
+    }
+
+    function foundation(ctx) {
+      const systems = sentenceList(ctx.systems, "current HR and IT systems");
+      const challenges = sentenceList(ctx.challenges, "employee self-service friction");
+      const outcomes = sentenceList(ctx.outcomes, "employee experience improvement and measurable automation value");
+      const verticals = sentenceList(ctx.verticals, "the selected verticals");
+      $("foundation").innerHTML = `
+        <h2>Foundation</h2>
+        <div class="callout">
+          <strong>Recommended foundation approach</strong>
+          <p>${ctx.org} should start by mapping the current employee self-service journey across ${systems}, with initial vertical focus on ${verticals}. Prioritize the moments where fragmented tools, distributed knowledge, support-ticket volume, and employee friction are creating the highest cost or dissatisfaction.</p>
+        </div>
+        <div class="grid two">
+          ${cards([
+            ["Diagnose the current journey", `Identify where employees rely on multiple channels such as Teams, portals, mobile, Workday, ServiceNow, and SharePoint. Focus first on the friction points that matter most for ${ctx.org}: ${challenges}.`],
+            ["Set the north-star experience", `Position ESS as a unified front door that helps employees get trusted answers, complete actions, or reach the right agent without navigating fragmented channels.`],
+            ["Start narrow, then scale", `Begin with ${verticals} or a high-value journey set, prove quality and adoption, then expand through reusable patterns, connected agents, and robust guardrails.`],
+            ["Establish operating model", "Use federated agent development across platform teams with centralized standards, shared telemetry, content ownership, and clear launch governance."]
+          ])}
+        </div>
+        <h3>Recommended foundation actions</h3>
+        ${list([
+          "Prioritize the employee journeys that create the most friction today and have clear ownership.",
+          "Assign accountable owners for policies, procedures, FAQs, localized content, and escalation paths.",
+          "Separate what ESS should retrieve from what it should act on during MVP, production, and later phases.",
+          "Approve responsible AI, privacy, security, and compliance guardrails before expanding access.",
+          `Anchor the launch narrative in the outcomes that matter most: ${outcomes}.`
+        ])}
+        ${learnLinks([learn.essOverview, learn.essCustomize, learn.essAuditing])}
+      `;
+    }
+
+    function strategy(ctx) {
+      const usecases = ctx.usecases.length ? ctx.usecases : ["Knowledge Retrieval and Action Taking"];
+      const verticals = sentenceList(ctx.verticals, "the selected verticals");
+      const scope = scopeNarrative(usecases);
+      const rows = usecases.map((name) => {
+        return useCaseRow(name);
+      }).join("");
+      $("strategy").innerHTML = `
+        <h2>Rollout Strategy</h2>
+        <div class="timeline">
+          <div class="step"><strong>1. MVP</strong><p>Start with a focused vertical or journey set that proves ${scope} with the selected systems and channels.</p></div>
+          <div class="step"><strong>2. Production</strong><p>Expand the highest-value service moments once answer quality, action controls, handoff paths, and support ownership are stable.</p></div>
+          <div class="step"><strong>3. Broader rollout</strong><p>Sequence by region, business unit, or journey family while standardizing governance, knowledge operations, adoption, and measurement.</p></div>
+          <div class="step"><strong>4. Future</strong><p>Extend to additional verticals and service domains as reusable patterns, integrations, and operating model maturity grow.</p></div>
+        </div>
+        <div class="callout">
+          <strong>Recommended strategy for ${ctx.org}</strong>
+          <p>For the current phase, <strong>${escapeHtml(ctx.phase)}</strong>, prioritize ${scope} for ${escapeHtml(ctx.audience)} across ${verticals}. Keep the first release narrow enough to prove employee value and integration quality, then broaden once usage, satisfaction, and operational impact are visible.</p>
+        </div>
+        <h3>Scope and experience design</h3>
+        <table>
+          <thead><tr><th>Selected area</th><th>Experience focus</th><th>Recommended pattern</th><th>Readiness inputs</th><th>Rollout treatment</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <h3>Scenario planning guidance</h3>
+        <div class="grid two">
+          ${cards([
+            ["Shape the service journey", "Translate each selected area into a clear employee moment: answer a question, complete an action, hand off to another agent, or combine these in one guided flow."],
+            ["Confirm readiness inputs", "For each journey, confirm the owner, source of truth, integration path, support handoff, risk posture, and telemetry baseline."],
+            ["Sequence by confidence", "Start where source quality and ownership are strongest. Add actions and handoffs as controls, escalation paths, and success measures mature."],
+            ["Keep the experience coherent", "When a customer adds a new priority, map it to the nearest service pattern so the playbook remains actionable even beyond the listed options."]
+          ])}
+        </div>
+        <h3>Strategic guardrails</h3>
+        ${list([
+          "Adopt a platform-first approach so patterns, marketplaces, reusable connectors, and governance practices can scale beyond the first use case.",
+          "Use Microsoft 365 Copilot and Teams as familiar employee entry points where possible.",
+          "Treat content governance as a rollout dependency; stale or distributed content should be owned before expansion.",
+          "Sequence action-taking scenarios after knowledge retrieval scenarios are stable, trusted, and measurable.",
+          "Align roadmap choices with Microsoft best practices for responsible AI, privacy, and security."
+        ])}
+        <h3>Scenario readiness checklist</h3>
+        ${list([
+          "Confirm the intended employee experience: knowledge retrieval, action taking, both, A2A handoff, or a phased combination.",
+          "Confirm business owner, source system, knowledge owner, privacy/compliance risk, support handoff, and telemetry baseline.",
+          "Define what must be true for launch: content quality, integration readiness, approval controls, escalation route, and measurable success criteria."
+        ])}
+        ${learnLinks([learn.essOverview, learn.essCustomize, learn.essInstallEnvironment, learn.essCommands])}
+      `;
+    }
+
+    function execution(ctx) {
+      const selectedSystems = sentenceList(ctx.systems, "the selected ESS systems and channels");
+      const selectedUseCases = sentenceList(ctx.usecases, "the selected ESS use cases");
+      const channelMotion = ctx.systems.includes("Teams")
+        ? "Use Teams as one of the existing channels for awareness and reinforcement."
+        : `Use the selected existing channels (${selectedSystems}) for awareness and reinforcement.`;
+      const focusAreas = [
+        ["Flight Check", `Use a readiness toolkit for ${selectedUseCases} to check the ESS deployment for potential silent failures and proactively capture unpleasant experiences. Coordinate configurations across ${selectedSystems} stakeholders instead of guessing who does what.`, learn.flightCheck],
+        ["EVALS", `Run structured, repeatable evaluations for ${selectedUseCases} to check whether the agent is actually delivering a good experience, not just producing an answer. Monitor response quality frequently at a regular cadence.`, learn.essEvals],
+        ["ALM", `Plan rollout strategy and sequencing for ${escapeHtml(ctx.phase)} so success measures are in place. Confirm the support strategy for end-user questions across process and systems or technical support paths.`, learn.essInstallEnvironment],
+        ["Telemetry & Feedback", `Deep dive into scenarios and personas for ${escapeHtml(ctx.audience)} to establish long-term habits. Monitor and reinforce usage and adoption through user telemetry.`],
+        ["Engage Leaders", "Engage all levels of leadership early and often, model the way to reinforce new ways of working and demonstrate use cases, and identify informal leaders."],
+        ["Communications", `${channelMotion} Build awareness and excitement by showing what is possible for selected user groups.`],
+        ["Champs & Readiness", `Recruit, prepare, and engage an employee community as a catalyst for landing, readiness, and value realization. Use champions to provide input on ${selectedUseCases} scenarios and insights on deployment plans.`]
+      ];
+      $("execution").innerHTML = `
+        <h2>Rollout Execution & Adoption</h2>
+        <div class="callout">
+          <strong>Recommended rollout execution approach</strong>
+          <p>Run the rollout through a disciplined operating rhythm: readiness checks, structured evaluations, ALM-backed release sequencing, telemetry and feedback review, visible leader sponsorship, targeted communications, and an active champions community.</p>
+        </div>
+        <h3>Data & tools recommendations</h3>
+        <div class="grid two">
+          ${cards(focusAreas.slice(0, 4))}
+        </div>
+        <h3>People & change recommendations</h3>
+        <div class="grid three">
+          ${cards(focusAreas.slice(4))}
+        </div>
+        <h3>Tailored execution sequence</h3>
+        <div class="timeline">
+          <div class="step"><strong>1. Check readiness</strong><p>Run Flight Check for ${selectedUseCases} and coordinate configurations across ${selectedSystems} stakeholders.</p><a href="${learn.flightCheck[1]}" target="_blank" rel="noopener noreferrer">${learn.flightCheck[0]}</a></div>
+          <div class="step"><strong>2. Evaluate experience</strong><p>Use EVALS to confirm the agent is delivering a good experience for ${escapeHtml(ctx.audience)}, with frequent response-quality monitoring.</p><a href="${learn.essEvals[1]}" target="_blank" rel="noopener noreferrer">${learn.essEvals[0]}</a></div>
+          <div class="step"><strong>3. Sequence rollout</strong><p>Use ALM to plan rollout sequencing for ${escapeHtml(ctx.phase)} and confirm support strategy for end-user questions.</p><a href="${learn.essInstallEnvironment[1]}" target="_blank" rel="noopener noreferrer">${learn.essInstallEnvironment[0]}</a></div>
+          <div class="step"><strong>4. Reinforce adoption</strong><p>Use telemetry, leadership engagement, communications, and champs to monitor, reinforce, and land usage habits.</p></div>
+        </div>
+        ${learnLinks([learn.flightCheck, learn.essEvals, learn.essInstallEnvironment, learn.essUsageAnalytics, learn.essFeedback, learn.essAuditing])}
+      `;
+    }
+
+    function value(ctx) {
+      const outcomeText = sentenceList(ctx.outcomes, "improved employee experience, time savings, ticket deflection, and measurable ROI");
+      $("value").innerHTML = `
+        <h2>Adoption & Realizing Value</h2>
+        <div class="callout">
+          <strong>Recommended value thesis</strong>
+          <p>${ctx.org} should connect ESS adoption to ${outcomeText}. Measure value through employee engagement, time saved, ticket deflection, satisfaction, automation, and clear baselines so the rollout can prove both employee experience and operational impact.</p>
+        </div>
+        <h3>Goals and KPI model</h3>
+        <table>
+          <thead><tr><th>Challenge / business problem</th><th>Goal definition</th><th>KPI(s)</th><th>Phase</th><th>Data source / baseline</th></tr></thead>
+          <tbody>
+            <tr><td>Fragmented employee self-service experience across multiple systems</td><td>Unify and streamline employee self-service through a single agentic interface</td><td>Time saved per employee on self-service tasks; ESAT</td><td>MVP / broader rollout</td><td>Map current journey clicks and time versus agent journey</td></tr>
+            <tr><td>Difficulty accessing accurate, up-to-date policies, benefits, and procedures</td><td>Provide fast, reliable knowledge retrieval via agent</td><td>Percent of queries resolved in first interaction; ESAT</td><td>MVP / broader rollout</td><td>Current process mapping and knowledge analytics</td></tr>
+            <tr><td>Inefficiencies in leave, payroll, and HR / IT processes</td><td>Automate leave booking, payroll queries, and other HR / IT actions</td><td>Percent of leave requests processed autonomously; reduction in manual HR / IT interventions</td><td>MVP / broader rollout</td><td>HR operations and service-management baseline</td></tr>
+            <tr><td>Need for measurable business impact from agent deployment</td><td>Demonstrate value through adoption, engagement, and time savings</td><td>Daily active users, agent-assisted hours, repeat usage</td><td>MVP / broader rollout</td><td>Copilot analytics and journey measurement</td></tr>
+            <tr><td>High volume of routine HR / IT support tickets</td><td>Automate and deflect routine tickets via agent</td><td>Reduction in routine HR / IT tickets; ticket deflection rate</td><td>Broader rollout</td><td>ServiceNow, HR case data, and helpdesk reporting</td></tr>
+          </tbody>
+        </table>
+        <h3>Value realization rhythm</h3>
+        <div class="grid two">
+          ${cards([
+            ["Baseline before launch", "Capture current journey time, clicks, ticket volume, first-contact resolution, satisfaction, support cost, and channel usage before claiming ROI."],
+            ["Weekly launch review", "Track adoption, unresolved questions, feedback sentiment, content gaps, handoffs, and support-team impact during MVP and production waves."],
+            ["Monthly value review", "Report time saved, ticket deflection, ESAT, automation rate, and operational capacity shifted to higher-value work."],
+            ["Expansion gate", "Expand only when the current wave shows trusted answers, stable actions, positive employee experience, and measurable operational impact."]
+          ])}
+        </div>
+        <h3>Recommended outcome narrative</h3>
+        ${list([
+          "Primary MVP outcome: improved employee experience and a streamlined self-service journey.",
+          "Secondary outcomes: increased automation, ticket deflection for HR / IT support, and reduced time to find trusted information.",
+          "Future outcomes: expansion to additional verticals and broader process automation through connected agents.",
+          "Executive value story: ESS creates a unified employee entry point while giving HR and IT teams capacity back for higher-value work."
+        ])}
+        ${learnLinks([learn.essUsageAnalytics, learn.essFeedback, learn.essOverview])}
+      `;
+    }
+
+    function setFooterState(isTailored) {
+      $("footerNote").textContent = isTailored
+        ? "This playbook is tailored based on the selections provided in the questionnaire and supported by Microsoft Learn documentation."
+        : "This sample playbook is illustrative and will be updated based on questionnaire inputs. Recommendations are supported by Microsoft Learn documentation.";
+    }
+
+    function generate(ctx = context(), isTailored = true) {
+      $("playbookTitle").innerHTML = `<span class="gradient-text">${ctx.org}</span> ESS Playbook`;
+      foundation(ctx);
+      strategy(ctx);
+      execution(ctx);
+      value(ctx);
+      setCustomizationNote(ctx, isTailored);
+      setFooterState(isTailored);
+    }
+
+    function showPage(pageId) {
+      document.querySelectorAll(".site-page").forEach((page) => page.classList.toggle("active-page", page.id === pageId));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function activateTab(name) {
+      document.querySelectorAll(".tab").forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.tab === name)));
+      document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.toggle("active", panel.id === name));
+    }
+
+    document.querySelectorAll(".tab").forEach((tab) => tab.addEventListener("click", () => activateTab(tab.dataset.tab)));
+    document.querySelectorAll("[data-page]").forEach((button) => button.addEventListener("click", () => showPage(button.dataset.page)));
+    $("generate").addEventListener("click", () => {
+      generate(context(), true);
+      showPage("playbookPage");
+    });
+    $("pdf").addEventListener("click", () => {
+      generate(context(), true);
+      window.print();
+    });
+    $("copy").addEventListener("click", async () => {
+      generate(context(), true);
+      const text = $("playbookPage").innerText;
+      await navigator.clipboard.writeText(text);
+      alert("Playbook summary copied to clipboard.");
+    });
+    $("reset").addEventListener("click", () => {
+      $("orgName").value = "Customer organization";
+      $("phase").value = "MVP / pilot active";
+      document.querySelectorAll('input[name="verticals"]').forEach((input) => {
+        input.checked = input.value === "HR" || input.value === "IT";
+      });
+      $("otherVerticals").value = "";
+      $("audience").value = "HR / IT employee self-service users";
+      $("otherSystems").value = "";
+      $("otherChallenges").value = "";
+      $("otherOutcomes").value = "";
+      document.querySelectorAll('input[name="usecases"]').forEach((input) => {
+        input.checked = input.value === "Knowledge Retrieval and Action Taking";
+      });
+      $("otherUseCases").value = "";
+      generate(sampleContext(), false);
+      activateTab("foundation");
+      showPage("playbookPage");
+    });
+    generate(sampleContext(), false);
+  </script>
+</body>
+</html>

@@ -1,14 +1,20 @@
-# Project
+# ESS Rollout & Adoption Playbook
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+The ESS Rollout & Adoption Playbook is a public, interactive planning tool for Employee Self-Service deployments. It guides teams from rollout context and priorities to a tailored playbook covering foundation, strategy, execution, adoption, and value realization.
 
-As the maintainer of this project, please make a few updates:
+## Use the playbook
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Visit [microsoft.github.io/ESS-Rollout-Playbook](https://microsoft.github.io/ESS-Rollout-Playbook/).
+
+The site runs entirely in the browser. Questionnaire responses are not sent to a server or stored by the application. PDF export uses the browser's print dialog.
+
+## Development
+
+The application is self-contained in `index.html`; it has no build step or runtime dependencies. Open the file directly in a browser for basic development, or serve the repository with any static HTTP server for production-equivalent testing.
+
+## Deployment
+
+Pushes to `main` deploy through the GitHub Pages workflow in `.github/workflows/deploy-pages.yml`. The repository must have **Settings > Pages > Build and deployment > Source** set to **GitHub Actions**.
 
 ## Contributing
 
