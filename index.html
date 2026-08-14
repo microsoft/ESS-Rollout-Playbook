@@ -406,7 +406,17 @@ html[data-theme="dark"] {
       .playbook-header .actions { justify-content: flex-start; }
     }
     @media print {
-      @page { margin: 12mm; }
+      @page {
+        margin: 12mm 12mm 20mm;
+        @bottom-center {
+          content: "Microsoft Confidential | ESS Rollout & Adoption Playbook";
+          padding-top: 3mm;
+          border-top: 1px solid var(--cp-border);
+          color: var(--cp-text-soft);
+          font-size: 8pt;
+          font-weight: 600;
+        }
+      }
       * {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
@@ -624,7 +634,7 @@ html[data-theme="dark"] {
       <div class="customization-note" id="customizationNote"></div>
     </section>
   </main>
-  <footer class="confidential-footer" id="footerNote">This sample playbook is illustrative and will be updated based on questionnaire inputs. Recommendations are supported by Microsoft Learn documentation.</footer>
+  <footer class="confidential-footer" id="footerNote">Microsoft Confidential. This sample playbook is illustrative and will be updated based on questionnaire inputs. Recommendations are supported by Microsoft Learn documentation.</footer>
 
   <script>
     const $ = (id) => document.getElementById(id);
@@ -971,9 +981,10 @@ html[data-theme="dark"] {
     }
 
     function setFooterState(isTailored) {
-      $("footerNote").textContent = isTailored
-        ? "This playbook is tailored based on the selections provided in the questionnaire and supported by Microsoft Learn documentation."
-        : "This sample playbook is illustrative and will be updated based on questionnaire inputs. Recommendations are supported by Microsoft Learn documentation.";
+      const footerText = isTailored
+        ? "Microsoft Confidential. This playbook is tailored based on the selections provided in the questionnaire and supported by Microsoft Learn documentation."
+        : "Microsoft Confidential. This sample playbook is illustrative and will be updated based on questionnaire inputs. Recommendations are supported by Microsoft Learn documentation.";
+      $("footerNote").textContent = footerText;
     }
 
     function generate(ctx = context(), isTailored = true) {
